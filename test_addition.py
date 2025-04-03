@@ -5,3 +5,4 @@ def test_addition():
     assert addition(-1, 1) == 0
     assert addition(0, 0) == 0
     assert addition(-1, -3) == -4
+    assert addition(1, -3) == -2
