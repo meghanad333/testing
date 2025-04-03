@@ -1,5 +1,5 @@
 from addition import addition
-from test import testing_with_ai
+from def_openai import testing_with_ai
 
 print("hello world")
 print(addition(5,6))
