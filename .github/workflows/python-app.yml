@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  test-and-merge:
     runs-on: windows-latest
 
     steps:
@@ -27,3 +27,9 @@ jobs:
 
     - name: Run PyTest
       run: pytest test_addition.py
+
+    - name: Enable Auto-Merge
+      uses: "pascalgn/automerge-action@v0.15.6"
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+        MERGE_METHOD: squash
