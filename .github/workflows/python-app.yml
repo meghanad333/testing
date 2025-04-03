@@ -30,7 +30,7 @@ jobs:
 
     - name: Auto-merge pull request
       if: github.event.pull_request.head.repo.full_name == github.repository
-      uses: peter-evans/auto-merge@v4
+      uses: peter-evans/enable-pull-request-automerge@v3
       with:
-        token: ${{ secrets.SECRET_KYE }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         merge-method: squash
