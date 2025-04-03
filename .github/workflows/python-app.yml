@@ -28,8 +28,22 @@ jobs:
     - name: Run PyTest
       run: pytest test_addition.py
 
-    - name: Auto-merge pull request
-      uses: peter-evans/enable-pull-request-automerge@v3
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        merge-method: squash
+    # - name: Auto-merge pull request
+    #   uses: peter-evans/enable-pull-request-automerge@v3
+    #   with:
+    #     token: ${{ secrets.GITHUB_TOKEN }}
+    #     merge-method: squash
+
+jobs:
+  automerge:
+    runs-on: windows-latest
+    steps:
+      - uses: reitermarkus/automerge@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          merge-method: rebase
+          do-not-merge-labels: never-merge
+          required-labels: automerge
+          pull-request: ${{ github.event.inputs.pull-request }}
+          review: ${{ github.event.inputs.review }}
+          dry-run: true
